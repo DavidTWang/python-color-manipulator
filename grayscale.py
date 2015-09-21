@@ -22,20 +22,22 @@ def main(argv):
 	# ===============
 	# Grayscale
 	# ===============
-	# Opens the image
-	image = open_image(fileName)
-	# Convert the image mode to "Luminosity"
-	image = image.convert('L')
-	# Show the image in xv
-	image.show()
-	# Close the image
-	image.close()
+	# # Opens the image
+	# image = open_image(fileName)
+	# # Convert the image mode to "Luminosity" - Perceived brightness of colours
+	# image = image.convert('L')
+	# # Show the image in xv
+	# image.show()
+	# image.save("Grayscale1.jpg")
+	# # Close the image
+	# image.close()
 
 	# ===========================
 	# Grayscale with Luminosity
 	# ===========================
 	# Opens the image
 	image = open_image(fileName)
+	image.show()
 
 	# ===========================================================
 	# Method 1
@@ -65,7 +67,7 @@ def main(argv):
 	# For each pixel color tuple in pixels
 	for pixel in pixels:
 		# Get the balanced grayscale color
-		lumigray = round((pixel[0]*0.299) + (pixel[1]*0.114) + (pixel[2]*0.587))
+		lumigray = round((pixel[0]*0.299) + (pixel[1]*0.587) + (pixel[2]*0.114))
 		# Set the RGB tuple to gray
 		pixels[count] = (lumigray, lumigray, lumigray)
 		count = count + 1
@@ -74,6 +76,7 @@ def main(argv):
 
 	# Show and close the image
 	image.show()
+	image.save("Grayscale2.jpg")
 	image.close()
 
 if __name__ == '__main__':
